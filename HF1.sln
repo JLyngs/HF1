@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35122.118
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Loops", "HF1\Loops.csproj", "{CBA71DC0-6106-4A16-A868-CA5092BD0EF1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Loops", "HF1\Loops.csproj", "{CBA71DC0-6106-4A16-A868-CA5092BD0EF1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Strings", "Strings\Strings.csproj", "{29D7278E-E518-4C5F-8973-B8AB98C883A2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{CBA71DC0-6106-4A16-A868-CA5092BD0EF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CBA71DC0-6106-4A16-A868-CA5092BD0EF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CBA71DC0-6106-4A16-A868-CA5092BD0EF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29D7278E-E518-4C5F-8973-B8AB98C883A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29D7278E-E518-4C5F-8973-B8AB98C883A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29D7278E-E518-4C5F-8973-B8AB98C883A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29D7278E-E518-4C5F-8973-B8AB98C883A2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
