@@ -3,7 +3,7 @@ using System.Collections.Generic;
 namespace Loops
 {
 
-    internal class Program
+    public class Program
     {
         static void Main()
         {
