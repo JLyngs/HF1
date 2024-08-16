@@ -24,9 +24,8 @@ namespace Mozart
             while (true)
             {
                 Console.WriteLine("Choose an instrument: piano, mbira, clarinet, flute-harp");
-                instrument = Console.ReadLine()?.ToLower();
+                instrument = Console.ReadLine()?.ToLower() ?? string.Empty;
 
-                // Check if the chosen instrument is valid
                 if (Array.Exists(validInstruments, elem => elem.Equals(instrument)))
                 {
                     return instrument;
@@ -88,18 +87,45 @@ namespace Mozart
             Console.WriteLine($"Style: {style}");
             Console.WriteLine($"Phrase: {phrase + 1} out of 16");
             Console.WriteLine($"Roll: {string.Join(", ", rolls)} - Sum: ({rollSum})");
+            Console.WriteLine("\nChange Volume with ↑ and ↓");
         }
 
         static void PlaySoundWithInfo(List<(AudioFileReader Reader, string FilePath)> audioFiles, string instrument, string style, List<(int Phrase, int[] Rolls, int RollSum)> rollInfo)
         {
+            int volumePercent = 50;
             if (audioFiles.Count > 0)
             {
                 var concatenatingProvider = new ConcatenatingSampleProvider(audioFiles.ConvertAll(f => f.Reader));
                 using (IWavePlayer waveOutDevice = new WaveOutEvent())
                 {
                     waveOutDevice.Init(concatenatingProvider);
+                    waveOutDevice.Volume = volumePercent / 100f;
                     waveOutDevice.Play();
 
+                    var volumeControlThread = new Thread(() =>
+                    {
+                        while (waveOutDevice.PlaybackState == PlaybackState.Playing)
+                        {
+                            if (Console.KeyAvailable)
+                            {
+                                var key = Console.ReadKey(intercept: true).Key;
+                                if (key == ConsoleKey.UpArrow)
+                                {
+                                    volumePercent = Math.Min(100, volumePercent + 10);
+                                    waveOutDevice.Volume = volumePercent / 100f;
+                                    Console.WriteLine($"\nVolume increased to: {volumePercent}%");
+                                }
+                                else if (key == ConsoleKey.DownArrow)
+                                {
+                                    volumePercent = Math.Max(0, volumePercent - 10);
+                                    waveOutDevice.Volume = volumePercent / 100f;
+                                    Console.WriteLine($"\nVolume decreased to: {volumePercent}%");
+                                }
+                            }
+                        }
+                    });
+                    volumeControlThread.IsBackground = true;
+                    volumeControlThread.Start();
 
                     for (int i = 0; i < audioFiles.Count; i++)
                     {
