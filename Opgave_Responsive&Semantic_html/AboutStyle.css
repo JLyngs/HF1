@@ -1,0 +1,155 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+    background-color: #6f4e37;
+    color: white;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.4rem 2rem;
+    background-color: burlywood;
+}
+
+header .logo-container {
+    display: flex;
+    align-items: center;
+}
+
+header .logo img {
+    width: 50px;
+    height: auto;
+    margin-right: 0.9rem;
+}
+
+header h1 {
+    font-size: 1.5rem;
+    color: brown;
+    margin: 0;
+    font-family: 'Courier New', Courier, monospace, sans-serif;
+}
+
+header nav {
+    display: flex;
+    gap: 1rem;
+}
+
+header nav a {
+    color: brown;
+    text-decoration: none;
+    font-size: 1.1rem;
+}
+
+header nav a:hover,
+header nav a.active {
+    border-bottom: 2px solid #ff6347;
+}
+
+/* Main */
+main {
+    padding: 2rem;
+}
+
+.about-us {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    max-width: 1100px;
+    margin: 2rem auto;
+    background-color: #444;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    align-items: top;
+}
+
+.about-us img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.about-us-content {
+    padding: 2rem;
+    text-align: left;
+}
+
+.about-us-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.about-us.reverse {
+    grid-template-columns: 1fr 1fr;
+}
+
+.about-us.reverse img {
+    order: 2;
+}
+
+.about-us.reverse .about-us-content {
+    order: 1;
+}
+
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #333;
+    color: white;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    header nav {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .about-us {
+        grid-template-columns: 1fr;
+    }
+
+    .about-us img {
+        width: 100%;
+        height: auto;
+    }
+
+    .about-us-content {
+        padding: 1rem;
+    }
+
+    .about-us-content h2 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 0.5rem 1rem;
+    }
+
+    header nav a {
+        font-size: 0.875rem;
+    }
+
+    .about-us-content {
+        padding: 0.5rem;
+    }
+
+    .about-us-content h2 {
+        font-size: 1.5rem;
+    }
+}
